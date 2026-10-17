@@ -15,8 +15,8 @@ const SLIDES = [
     caption: "Weddings",
   },
   {
-    src: "/images/photo-2.jpg",
-    alt: "Bride and groom dancing at night during their wedding celebration",
+    src: "/images/photo-4.jpg",
+    alt: "Indian couple celebrating haldi ceremony with yellow floral decor",
     caption: "Celebrations",
   },
   {
