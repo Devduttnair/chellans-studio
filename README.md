@@ -24,6 +24,22 @@ their business could present itself online. Important notes:
   opens WhatsApp (`wa.me`) so the visitor sends it from their own account.
 - No website-development prices appear anywhere on the client-facing pages.
 
+## Verified business facts
+
+The following details come from the studio's own printed material (business
+card + photo order envelope, saved in `reference/`), not from the brief:
+
+- Email: chellanstpra@gmail.com
+- Their tagline: "We capture your memories forever"
+- Two branches: **Tripunithura** (Main Road, Tripunithura) and **Kakkanad**
+  (Edappally - Pukkattupady Rd, Near Kosamattam Finance, Judgemukku,
+  Thrikkakara)
+- Counter services: one-minute passport photos, photo enlargement, photo
+  lamination, album designing, mug printing, personalized gifts
+
+Everything else on the site (reviews, hours, milestones, client names) remains
+deliberately unclaimed, per the demo-honesty rules above.
+
 ## Local setup
 
 Requires Node.js 18.18+ (tested on Node 24).

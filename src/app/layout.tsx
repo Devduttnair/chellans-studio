@@ -76,14 +76,16 @@ const jsonLd = {
   description:
     "Photography studio in Tripunithura, Ernakulam since 1976. Studio portraits, wedding photography, cinematic videography, photo retouching, photo restoration, and custom photo framing.",
   telephone: "+918136846979",
+  email: SITE.email,
   foundingDate: "1976",
   address: {
     "@type": "PostalAddress",
+    streetAddress: SITE.address.street,
     addressLocality: SITE.address.city,
     addressRegion: SITE.address.region,
     addressCountry: SITE.address.country,
   },
-  areaServed: ["Tripunithura", "Ernakulam", "Kochi", "Kerala"],
+  areaServed: ["Tripunithura", "Kakkanad", "Thrikkakara", "Ernakulam", "Kochi", "Kerala"],
   hasMap: SITE.mapsSearchUrl,
 };
 

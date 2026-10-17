@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { Eyebrow, Reveal } from "./Reveal";
-import { SITE, whatsappEnquiry } from "@/data/site";
+import { SITE, QUICK_SERVICES, whatsappEnquiry } from "@/data/site";
 
 interface Service {
   title: string;
@@ -149,6 +149,49 @@ export function Services() {
           {SERVICES_LIST.map((s, i) => (
             <ServiceRow key={s.title} service={s} flip={i % 2 === 1} />
           ))}
+        </div>
+
+        <div className="mt-10 border-t border-ivory/10 pt-14 sm:pt-20">
+          <Reveal>
+            <p className="text-[11px] font-medium uppercase tracking-mega text-gold">
+              Also at the studio
+            </p>
+            <h3 className="mt-4 max-w-2xl font-serif text-3xl font-light leading-tight text-ivory sm:text-4xl">
+              Everyday prints, gifts{" "}
+              <span className="italic text-gold">and keepsakes</span>
+            </h3>
+            <p className="mt-4 max-w-xl text-sm font-light leading-relaxed text-stone">
+              Passport photos in a minute, mug printing, album designing and
+              more, available over the counter at both studios.
+            </p>
+          </Reveal>
+          <div className="mt-10 grid gap-px overflow-hidden border border-ivory/10 bg-ivory/10 sm:grid-cols-2 lg:grid-cols-3">
+            {QUICK_SERVICES.map((title, i) => (
+              <Reveal key={title} delay={(i % 3) * 0.06}>
+                <a
+                  href={whatsappEnquiry(
+                    `Hello ${SITE.name}, I would like to enquire about ${title}.`
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-full items-center justify-between gap-4 bg-coal p-6 transition-colors hover:bg-ink"
+                >
+                  <span className="flex items-center gap-4">
+                    <span className="text-[10px] text-gold" aria-hidden="true">
+                      ◆
+                    </span>
+                    <span className="font-serif text-xl font-light text-ivory transition-colors group-hover:text-gold">
+                      {title}
+                    </span>
+                  </span>
+                  <ArrowUpRight
+                    className="h-4 w-4 shrink-0 text-stone transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-gold"
+                    aria-hidden="true"
+                  />
+                </a>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>

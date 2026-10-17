@@ -1,7 +1,7 @@
 const ITEMS = [
-  "The art of remembering",
+  "We capture your memories forever",
   "Est. 1976",
-  "Tripunithura · Kerala",
+  "Tripunithura · Kakkanad",
   "Studio portraits",
   "Weddings",
   "Cinematic films",

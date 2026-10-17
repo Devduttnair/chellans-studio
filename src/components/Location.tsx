@@ -1,8 +1,13 @@
 "use client";
 
-import { MapPin, Phone, MessageCircle, Navigation } from "lucide-react";
+import { MapPin, Phone, MessageCircle, Navigation, Mail } from "lucide-react";
 import { Eyebrow, Reveal } from "./Reveal";
-import { SITE, WHATSAPP_LINK } from "@/data/site";
+import {
+  SITE,
+  WHATSAPP_LINK,
+  branchDirectionsUrl,
+  branchMapsUrl,
+} from "@/data/site";
 
 export function Location() {
   return (
@@ -14,24 +19,54 @@ export function Location() {
             <div>
               <Reveal>
                 <h2 className="font-serif text-4xl font-light leading-tight text-ivory sm:text-6xl">
-                  In the heart of{" "}
-                  <span className="italic text-gold">Tripunithura</span>
+                  Two studios,{" "}
+                  <span className="italic text-gold">one legacy</span>
                 </h2>
               </Reveal>
+              <div className="mt-10 grid gap-8 sm:grid-cols-2">
+                {SITE.branches.map((branch, i) => (
+                  <Reveal key={branch.name} delay={i * 0.08}>
+                    <div className="border-l border-gold/40 pl-5">
+                      <p className="text-[11px] font-medium uppercase tracking-mega text-gold">
+                        {branch.name}
+                      </p>
+                      <address className="mt-3 text-[15px] font-light not-italic leading-relaxed text-ivory/85">
+                        {branch.lines.map((line) => (
+                          <span key={line} className="block">
+                            {line}
+                          </span>
+                        ))}
+                      </address>
+                      <a
+                        href={branchDirectionsUrl(branch.mapsQuery)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide-xl text-ivory/70 transition-colors hover:text-gold"
+                      >
+                        <Navigation className="h-3.5 w-3.5" aria-hidden="true" />
+                        Get directions
+                      </a>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
               <Reveal delay={0.1}>
-                <address className="mt-8 flex items-start gap-4 not-italic">
-                  <MapPin className="mt-1 h-5 w-5 shrink-0 text-gold" aria-hidden="true" />
-                  <span className="text-[15px] font-light leading-relaxed text-ivory/85">
-                    {SITE.address.full}
-                  </span>
-                </address>
                 <a
                   href={SITE.phoneHref}
-                  className="mt-6 flex items-center gap-4 text-ivory transition-colors hover:text-gold"
+                  className="mt-10 flex items-center gap-4 text-ivory transition-colors hover:text-gold"
                 >
                   <Phone className="h-5 w-5 shrink-0 text-gold" aria-hidden="true" />
                   <span className="font-serif text-2xl font-light tracking-wide">
                     {SITE.phoneDisplay}
+                  </span>
+                </a>
+                <a
+                  href={SITE.emailHref}
+                  className="mt-4 flex items-center gap-4 text-ivory/85 transition-colors hover:text-gold"
+                >
+                  <Mail className="h-5 w-5 shrink-0 text-gold" aria-hidden="true" />
+                  <span className="text-[15px] font-light tracking-wide">
+                    {SITE.email}
                   </span>
                 </a>
                 <div className="mt-10 flex flex-wrap gap-4">
@@ -67,7 +102,7 @@ export function Location() {
             <Reveal delay={0.15}>
               <div className="relative aspect-[4/3] overflow-hidden border border-ivory/10">
                 <iframe
-                  title={`Map showing the location of ${SITE.name} in Tripunithura, Kerala`}
+                  title={`Map showing the location of ${SITE.name} on Main Road, Tripunithura, Kerala`}
                   src={SITE.mapsEmbedUrl}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -77,7 +112,7 @@ export function Location() {
                 />
               </div>
               <p className="mt-3 text-[11px] uppercase tracking-wide-xl text-stone/60">
-                Map data © Google · Interactive map
+                Map data © Google · Interactive map · Main Road, Tripunithura
               </p>
             </Reveal>
           </div>
@@ -90,10 +125,10 @@ export function Location() {
             <div>
               <p className="font-serif text-2xl font-light text-ivory">{SITE.name}</p>
               <p className="mt-2 text-[10px] font-medium uppercase tracking-mega text-gold">
-                Est. {SITE.founded} · Tripunithura
+                Est. {SITE.founded} · Tripunithura · Kakkanad
               </p>
               <p className="mt-5 max-w-xs text-sm font-light italic leading-relaxed text-stone">
-                {SITE.tagline}
+                {SITE.realTagline}
               </p>
             </div>
             <nav aria-label="Footer">
@@ -121,15 +156,25 @@ export function Location() {
                 Contact
               </p>
               <address className="mt-5 space-y-3 text-sm font-light not-italic text-ivory/75">
-                <p>{SITE.address.full}</p>
+                {SITE.branches.map((branch) => (
+                  <p key={branch.name}>
+                    <span className="text-gold/80">{branch.name}:</span>{" "}
+                    {branch.lines.join(" ")}
+                  </p>
+                ))}
                 <p>
                   <a href={SITE.phoneHref} className="transition-colors hover:text-gold">
                     {SITE.phoneDisplay}
                   </a>
                 </p>
                 <p>
+                  <a href={SITE.emailHref} className="transition-colors hover:text-gold">
+                    {SITE.email}
+                  </a>
+                </p>
+                <p>
                   <a
-                    href={SITE.mapsSearchUrl}
+                    href={branchMapsUrl(SITE.branches[0].mapsQuery)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="transition-colors hover:text-gold"
