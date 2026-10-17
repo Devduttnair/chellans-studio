@@ -1,9 +1,30 @@
 "use client";
 
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { SITE } from "@/data/site";
+
+const AUTOPLAY_MS = 6500;
+
+const SLIDES = [
+  {
+    src: "/images/hero.webp",
+    alt: "Bride and groom in a cinematic wedding portrait",
+    caption: "Weddings",
+  },
+  {
+    src: "/images/photo-2.jpg",
+    alt: "Bride and groom dancing at night during their wedding celebration",
+    caption: "Celebrations",
+  },
+  {
+    src: "/images/video-1.jpg",
+    alt: "Professional cinema camera set up on an outdoor film set",
+    caption: "Cinematic craft",
+  },
+] as const;
 
 const line1 = "An enduring art".split(" ");
 const line2 = "of capturing moments.".split(" ");
@@ -34,19 +55,66 @@ function StaggerLine({ words, delay }: { words: string[]; delay: number }) {
 export function Hero() {
   const reduce = useReducedMotion();
   const base = reduce ? 0 : 2.4;
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const touchX = useRef<number | null>(null);
+
+  const goTo = useCallback(
+    (i: number) => setIndex(((i % SLIDES.length) + SLIDES.length) % SLIDES.length),
+    []
+  );
+  const next = useCallback(() => goTo(index + 1), [goTo, index]);
+  const prev = useCallback(() => goTo(index - 1), [goTo, index]);
+
+  useEffect(() => {
+    if (reduce || paused) return;
+    const t = setInterval(() => {
+      setIndex((i) => (i + 1) % SLIDES.length);
+    }, AUTOPLAY_MS);
+    return () => clearInterval(t);
+  }, [reduce, paused]);
 
   return (
-    <section id="top" aria-label="Introduction" className="relative h-[100svh] min-h-[560px] overflow-hidden">
-      {/* Backdrop */}
+    <section
+      id="top"
+      aria-label="Introduction"
+      className="relative h-[100svh] min-h-[560px] overflow-hidden"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onTouchStart={(e) => {
+        touchX.current = e.touches[0].clientX;
+      }}
+      onTouchEnd={(e) => {
+        if (touchX.current === null) return;
+        const dx = e.changedTouches[0].clientX - touchX.current;
+        if (dx > 48) prev();
+        else if (dx < -48) next();
+        touchX.current = null;
+      }}
+    >
+      {/* Backdrop carousel */}
       <div className="absolute inset-0" aria-hidden="true">
-        <Image
-          src="/images/hero.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className={`object-cover ${reduce ? "" : "animate-kenburns"}`}
-        />
+        {SLIDES.map((s, i) => {
+          const active = i === index;
+          return (
+            <motion.div
+              key={s.src}
+              className="absolute inset-0"
+              initial={false}
+              animate={{ opacity: active ? 1 : 0 }}
+              transition={{ duration: reduce ? 0 : 1.8, ease: "easeInOut" }}
+            >
+              <Image
+                src={s.src}
+                alt=""
+                fill
+                priority={i === 0}
+                sizes="100vw"
+                className={`object-cover ${reduce || !active ? "" : "animate-kenburns"}`}
+              />
+            </motion.div>
+          );
+        })}
         <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/35 to-ink" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/55 via-transparent to-transparent" />
       </div>
@@ -95,6 +163,46 @@ export function Hero() {
           </a>
         </motion.div>
       </div>
+
+      {/* Carousel controls */}
+      {!reduce && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: base + 1.4 }}
+          className="absolute bottom-7 right-5 z-10 flex items-center gap-4 sm:right-8"
+          role="group"
+          aria-label="Hero slideshow controls"
+        >
+          <span className="text-[11px] font-medium uppercase tracking-mega text-ivory/70" aria-live="polite">
+            {String(index + 1).padStart(2, "0")}
+            <span className="mx-2 text-ivory/30">/</span>
+            <span className="text-ivory/40">{String(SLIDES.length).padStart(2, "0")}</span>
+          </span>
+          <span className="relative block h-px w-16 overflow-hidden bg-ivory/20" aria-hidden="true">
+            <span
+              key={index}
+              className={`absolute inset-y-0 left-0 bg-gold ${paused ? "[animation-play-state:paused]" : ""} animate-hero-progress`}
+            />
+          </span>
+          <button
+            type="button"
+            onClick={prev}
+            aria-label="Previous hero image"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-ivory/30 text-ivory/80 transition-colors hover:border-gold hover:text-gold"
+          >
+            <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            onClick={next}
+            aria-label="Next hero image"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-ivory/30 text-ivory/80 transition-colors hover:border-gold hover:text-gold"
+          >
+            <ChevronRight className="h-4 w-4" aria-hidden="true" />
+          </button>
+        </motion.div>
+      )}
 
       {/* Scroll cue */}
       <motion.a
