@@ -54,7 +54,7 @@ export function Restoration() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-6 max-w-md text-[15px] font-light leading-relaxed text-stone">
-                Faded colours, torn corners, water marks and years of wear.
+                Faded colours, torn corners, water marks and years of wear.{" "}
                 {SITE.name} restores damaged photographs by hand, so the faces
                 that matter to your family are never lost to time.
               </p>
