@@ -29,6 +29,19 @@ const SLIDES = [
 const line1 = "An enduring art".split(" ");
 const line2 = "of capturing moments.".split(" ");
 
+const PARTICLES = [
+  { left: "8%", bottom: "18%", size: 5, duration: 11, delay: 0, opacity: 0.7 },
+  { left: "18%", bottom: "32%", size: 3, duration: 14, delay: 2.5, opacity: 0.5 },
+  { left: "32%", bottom: "12%", size: 6, duration: 12, delay: 5, opacity: 0.6 },
+  { left: "47%", bottom: "26%", size: 4, duration: 15, delay: 1.2, opacity: 0.55 },
+  { left: "58%", bottom: "16%", size: 3, duration: 10, delay: 7, opacity: 0.5 },
+  { left: "68%", bottom: "34%", size: 5, duration: 13, delay: 3.4, opacity: 0.65 },
+  { left: "78%", bottom: "20%", size: 4, duration: 11.5, delay: 8.2, opacity: 0.5 },
+  { left: "88%", bottom: "30%", size: 3, duration: 14.5, delay: 4.6, opacity: 0.55 },
+  { left: "93%", bottom: "12%", size: 6, duration: 12.5, delay: 6.1, opacity: 0.6 },
+  { left: "25%", bottom: "42%", size: 3, duration: 16, delay: 9, opacity: 0.45 },
+] as const;
+
 function StaggerLine({ words, delay }: { words: string[]; delay: number }) {
   const reduce = useReducedMotion();
   return (
@@ -118,6 +131,27 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/35 to-ink" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/55 via-transparent to-transparent" />
       </div>
+
+      {/* Drifting light particles */}
+      {!reduce && (
+        <div className="pointer-events-none absolute inset-0 z-[5]" aria-hidden="true">
+          {PARTICLES.map((p, i) => (
+            <span
+              key={i}
+              className="animate-float-up absolute rounded-full bg-gold/70 blur-[2px]"
+              style={{
+                left: p.left,
+                bottom: p.bottom,
+                width: p.size,
+                height: p.size,
+                opacity: p.opacity,
+                animationDuration: `${p.duration}s`,
+                animationDelay: `${p.delay}s`,
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Copy */}
       <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-5 pb-28 sm:px-8 sm:pb-32">

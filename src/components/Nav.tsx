@@ -181,7 +181,7 @@ export function Nav() {
               </ul>
             </nav>
             <p className="px-8 pb-10 text-xs uppercase tracking-wide-xl text-stone">
-              {SITE.phoneDisplay} · Tripunithura
+              {SITE.phoneDisplay} · Tripunithura · Kakkanad
             </p>
           </motion.div>
         )}

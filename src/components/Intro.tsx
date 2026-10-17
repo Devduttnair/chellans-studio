@@ -70,7 +70,7 @@ export function Intro() {
             transition={{ duration: 1, delay: 0.7 }}
             className="mt-6 pl-[0.35em] text-[11px] font-medium uppercase text-stone"
           >
-            Tripunithura
+            Tripunithura · Kakkanad
           </motion.p>
           <motion.div
             initial={{ scaleX: 0 }}

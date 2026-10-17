@@ -12,6 +12,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--color-ink);
 }
 
 body {
@@ -94,6 +95,37 @@ body {
   animation: hero-progress 6.5s linear forwards;
 }
 
+/* Drifting light particles in the hero */
+@keyframes float-up {
+  0% {
+    transform: translateY(24px) translateX(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.85;
+  }
+  60% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-140px) translateX(14px);
+    opacity: 0;
+  }
+}
+.animate-float-up {
+  animation: float-up 11s ease-in-out infinite;
+}
+
+/* Slow rotating circular badge */
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 26s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -101,7 +133,9 @@ body {
   .animate-kenburns,
   .animate-scroll-cue,
   .animate-marquee,
-  .animate-hero-progress {
+  .animate-hero-progress,
+  .animate-float-up,
+  .animate-spin-slow {
     animation: none;
   }
   *,

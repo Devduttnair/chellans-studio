@@ -38,8 +38,9 @@ interface EyebrowProps {
   light?: boolean;
 }
 
-/** Small letterspaced section label with a gold rule. */
+/** Small letterspaced section label with a gold rule that draws in. */
 export function Eyebrow({ children, light = false }: EyebrowProps) {
+  const reduce = useReducedMotion();
   return (
     <Reveal>
       <p
@@ -47,9 +48,13 @@ export function Eyebrow({ children, light = false }: EyebrowProps) {
           light ? "text-stone" : "text-gold"
         }`}
       >
-        <span
+        <motion.span
           aria-hidden="true"
-          className={`inline-block h-px w-10 ${light ? "bg-stone/60" : "bg-gold/70"}`}
+          initial={reduce ? { scaleX: 1 } : { scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true, margin: "-12% 0px" }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className={`inline-block h-px w-10 origin-left ${light ? "bg-stone/60" : "bg-gold/70"}`}
         />
         {children}
       </p>
