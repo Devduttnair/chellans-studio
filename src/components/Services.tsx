@@ -129,7 +129,7 @@ function ServiceRow({ service, flip }: { service: Service; flip: boolean }) {
 
 export function Services() {
   return (
-    <section id="services" aria-label="Services" className="bg-coal">
+    <section id="services" aria-label="Services" className="overflow-clip bg-coal">
       <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-36">
         <Eyebrow>Services</Eyebrow>
         <Reveal>
