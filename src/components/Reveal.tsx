@@ -57,7 +57,7 @@ export function KasavuBand({ className = "" }: { className?: string }) {
       aria-hidden="true"
       className={`overflow-hidden border-y border-gold/25 bg-coal py-3 ${className}`}
     >
-      <div className="mx-auto flex w-max items-center">
+      <div className="animate-marquee mx-auto flex w-max items-center" style={{ animationDuration: "80s" }}>
         {Array.from({ length: 64 }).map((_, i) => (
           <span key={i} className="flex items-center">
             <span className="mx-5 h-1.5 w-1.5 rotate-45 bg-gold/60" />

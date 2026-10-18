@@ -11,8 +11,8 @@ const AUTOPLAY_MS = 6500;
 const SLIDES = [
   {
     src: "/images/hero.webp",
-    alt: "Bride and groom in a cinematic wedding portrait",
-    caption: "Weddings",
+    alt: "Kerala bride in a traditional red and gold saree adorned with jasmine flowers",
+    caption: "Kerala weddings",
   },
   {
     src: "/images/photo-4.jpg",

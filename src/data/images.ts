@@ -160,4 +160,20 @@ export const GALLERY: GalleryImage[] = [
     w: 1600,
     h: 2400,
   },
+  {
+    src: "/images/kerala-wedding.jpg",
+    alt: "Kerala couple exchanging floral garlands during a traditional wedding ceremony",
+    caption: "Kerala wedding ceremony",
+    category: "photography",
+    w: 1600,
+    h: 2844,
+  },
+  {
+    src: "/images/kerala-bride.jpg",
+    alt: "Close-up portrait of a Kerala bride wearing traditional gold jewelry",
+    caption: "Traditional bridal portrait",
+    category: "portraits",
+    w: 1600,
+    h: 2000,
+  },
 ];
