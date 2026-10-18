@@ -100,7 +100,8 @@ image content type), downloaded locally (no hotlinking), and optimized.
 
 Pexels photo IDs used (see `src/data/images.ts` for the mapping):
 
-- hero: 27443997 · portraits: 34921744, 37524408, 14677599, 20198788
+- hero: 27443997 (2560px) · photo-4 (haldi): 12153938 (2560px) · video-1: 10395639 (2560px)
+- portraits: 34921744, 37524408, 14677599, 20198788
 - photography: 17657612, 27443997, 19613670, 12153938, 37045023, 35069916
 - videography: 10395639, 3062549, 13811051
 - frames: 29985393, 310435, 7877826

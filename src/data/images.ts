@@ -45,8 +45,8 @@ export const GALLERY: GalleryImage[] = [
     alt: "Professional cinema camera set up on an outdoor film set",
     caption: "On set, cinematic production",
     category: "videography",
-    w: 1600,
-    h: 1067,
+    w: 2560,
+    h: 1707,
   },
   {
     src: "/images/frames-1.jpg",
@@ -117,8 +117,8 @@ export const GALLERY: GalleryImage[] = [
     alt: "Indian couple celebrating haldi ceremony with yellow floral decor",
     caption: "Haldi ceremony",
     category: "photography",
-    w: 1600,
-    h: 1067,
+    w: 2560,
+    h: 1707,
   },
   {
     src: "/images/portrait-4.jpg",
