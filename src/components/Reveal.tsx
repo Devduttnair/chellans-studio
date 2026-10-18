@@ -50,6 +50,25 @@ export function KasavuDivider({ className = "" }: { className?: string }) {
     </div>
   );
 }
+/** Bold repeating kasavu-style motif band, like a saree border strip. */
+export function KasavuBand({ className = "" }: { className?: string }) {
+  return (
+    <div
+      aria-hidden="true"
+      className={`overflow-hidden border-y border-gold/25 bg-coal py-3 ${className}`}
+    >
+      <div className="mx-auto flex w-max items-center">
+        {Array.from({ length: 64 }).map((_, i) => (
+          <span key={i} className="flex items-center">
+            <span className="mx-5 h-1.5 w-1.5 rotate-45 bg-gold/60" />
+            <span className="h-px w-8 bg-gold/25" />
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /** Small letterspaced section label with a gold rule that draws in. */
 export function Eyebrow({ children, light = false }: EyebrowProps) {
   const reduce = useReducedMotion();

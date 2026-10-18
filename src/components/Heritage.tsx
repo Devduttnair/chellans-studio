@@ -127,15 +127,17 @@ export function Heritage() {
               </div>
             )}
             <motion.figure style={{ y: yA }} className="relative ml-auto w-[86%]">
-              <div className="relative aspect-[4/5] overflow-hidden sm:aspect-[16/11]">
-                <Image
-                  src="/images/heritage-craft.webp"
-                  alt="Hands holding a vintage film camera, a nod to the craft of photography"
-                  fill
-                  sizes="(max-width: 1024px) 86vw, 55vw"
-                  className="object-cover"
-                  loading="lazy"
-                />
+              <div className="border border-gold/50 p-1.5 sm:p-2">
+                <div className="relative aspect-[4/5] overflow-hidden sm:aspect-[16/11]">
+                  <Image
+                    src="/images/heritage-craft.webp"
+                    alt="Hands holding a vintage film camera, a nod to the craft of photography"
+                    fill
+                    sizes="(max-width: 1024px) 86vw, 55vw"
+                    className="object-cover"
+                    loading="lazy"
+                  />
+                </div>
               </div>
               <figcaption className="mt-3 text-[11px] uppercase tracking-wide-xl text-ink/50">
                 The craft, then and now · illustrative photograph

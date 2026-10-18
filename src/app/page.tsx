@@ -1,3 +1,4 @@
+import { KasavuBand } from "@/components/Reveal";
 import { Intro } from "@/components/Intro";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
@@ -20,6 +21,7 @@ export default function Home() {
       <main>
         <Hero />
         <Marquee />
+        <KasavuBand />
         <Heritage />
         <Portfolio />
         <Services />

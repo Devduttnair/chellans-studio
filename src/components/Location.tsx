@@ -129,6 +129,9 @@ export function Location() {
           <div className="grid gap-10 md:grid-cols-3">
             <div>
               <p className="font-serif text-2xl font-light text-ivory">{SITE.name}</p>
+              <p className="mt-1.5 text-base font-light text-stone/75">
+                ചെല്ലൻസ് സ്റ്റുഡിയോ
+              </p>
               <p className="mt-2 text-[10px] font-medium uppercase tracking-mega text-gold">
                 Est. {SITE.founded} · Tripunithura · Kakkanad
               </p>
