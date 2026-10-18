@@ -69,10 +69,10 @@ export function Restoration() {
           <Reveal delay={0.15}>
             <div
               ref={trackRef}
-              className="relative aspect-[3/4] w-full cursor-ew-resize select-none overflow-hidden bg-coal sm:aspect-[4/5]"
+              className="relative aspect-[3/4] w-full cursor-ew-resize touch-pan-y select-none overflow-hidden bg-coal sm:aspect-[4/5]"
               onPointerDown={(e) => {
                 dragging.current = true;
-                (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+                e.currentTarget.setPointerCapture?.(e.pointerId);
                 setFromClientX(e.clientX);
               }}
               onPointerMove={(e) => {

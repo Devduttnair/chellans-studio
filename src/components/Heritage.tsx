@@ -99,24 +99,27 @@ export function Heritage() {
             {!reduce && (
               <div
                 aria-hidden="true"
-                className="animate-spin-slow absolute -top-12 left-0 z-10 h-28 w-28 sm:-top-14 sm:h-36 sm:w-36"
+                className="absolute -top-10 left-3 z-10 h-28 w-28 sm:-top-12 sm:h-36 sm:w-36"
               >
-                <svg viewBox="0 0 120 120" className="h-full w-full">
-                  <defs>
-                    <path
-                      id="heritage-badge-circle"
-                      d="M 60,60 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0"
-                    />
-                  </defs>
-                  <text
-                    className="fill-ink/60"
-                    style={{ fontSize: "10px", letterSpacing: "2.6px" }}
-                  >
-                    <textPath href="#heritage-badge-circle">
-                      CHELLAN&apos;S STUDIO · EST 1976 ·
-                    </textPath>
-                  </text>
-                </svg>
+                <div className="absolute inset-0 rounded-full bg-ivory shadow-[0_10px_36px_rgba(16,16,16,0.28)]" />
+                <div className="animate-spin-slow absolute inset-0">
+                  <svg viewBox="0 0 120 120" className="h-full w-full">
+                    <defs>
+                      <path
+                        id="heritage-badge-circle"
+                        d="M 60,60 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0"
+                      />
+                    </defs>
+                    <text
+                      className="fill-ink/60"
+                      style={{ fontSize: "10px", letterSpacing: "2.6px" }}
+                    >
+                      <textPath href="#heritage-badge-circle">
+                        CHELLAN&apos;S STUDIO · EST 1976 ·
+                      </textPath>
+                    </text>
+                  </svg>
+                </div>
                 <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold" />
               </div>
             )}

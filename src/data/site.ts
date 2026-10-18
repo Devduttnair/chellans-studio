@@ -48,6 +48,9 @@ export const branchMapsUrl = (query: string) =>
 export const branchDirectionsUrl = (query: string) =>
   `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(query)}`;
 
+export const branchEmbedUrl = (query: string) =>
+  `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+
 export const WHATSAPP_LINK = `https://wa.me/${SITE.whatsappNumber}`;
 
 export function whatsappEnquiry(prefill: string): string {
@@ -72,3 +75,6 @@ export const QUICK_SERVICES = [
   "Mug printing",
   "Personalized gifts",
 ] as const;
+
+/** Every service the studio offers, for the enquiry form selector. */
+export const ALL_SERVICES = [...SERVICES, ...QUICK_SERVICES] as const;

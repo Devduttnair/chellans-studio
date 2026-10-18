@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { MessageCircle, Phone, Send } from "lucide-react";
 import { Eyebrow, Reveal } from "./Reveal";
-import { SITE, SERVICES, whatsappEnquiry } from "@/data/site";
+import { SITE, ALL_SERVICES, whatsappEnquiry } from "@/data/site";
 
 const inputClass =
   "w-full border border-ivory/20 bg-ink px-4 py-3.5 text-[15px] font-light text-ivory placeholder:text-stone/50 transition-colors focus:border-gold focus:outline-none";
@@ -11,7 +11,7 @@ const inputClass =
 export function Enquiry() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [service, setService] = useState<string>(SERVICES[0]);
+  const [service, setService] = useState<string>(ALL_SERVICES[0]);
   const [date, setDate] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -118,7 +118,7 @@ export function Enquiry() {
                     onChange={(e) => setService(e.target.value)}
                     className={`${inputClass} appearance-none`}
                   >
-                    {SERVICES.map((s) => (
+                    {ALL_SERVICES.map((s) => (
                       <option key={s} value={s} className="bg-ink text-ivory">
                         {s}
                       </option>

@@ -6,6 +6,7 @@ import {
   SITE,
   WHATSAPP_LINK,
   branchDirectionsUrl,
+  branchEmbedUrl,
   branchMapsUrl,
 } from "@/data/site";
 
@@ -99,22 +100,26 @@ export function Location() {
               </Reveal>
             </div>
 
-            <Reveal delay={0.15}>
-              <div className="relative aspect-[4/3] overflow-hidden border border-ivory/10">
-                <iframe
-                  title={`Map showing the location of ${SITE.name} on Main Road, Tripunithura, Kerala`}
-                  src={SITE.mapsEmbedUrl}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="absolute inset-0 h-full w-full grayscale-[35%] contrast-[1.05]"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                />
-              </div>
-              <p className="mt-3 text-[11px] uppercase tracking-wide-xl text-stone/60">
-                Map data © Google · Interactive map · Main Road, Tripunithura
-              </p>
-            </Reveal>
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+              {SITE.branches.map((branch, i) => (
+                <Reveal key={branch.name} delay={0.15 + i * 0.08}>
+                  <div className="relative aspect-[4/3] overflow-hidden border border-ivory/10">
+                    <iframe
+                      title={`Map showing the ${branch.name} branch of ${SITE.name}`}
+                      src={branchEmbedUrl(branch.mapsQuery)}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="absolute inset-0 h-full w-full grayscale-[35%] contrast-[1.05]"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                    />
+                  </div>
+                  <p className="mt-3 text-[11px] uppercase tracking-wide-xl text-stone/60">
+                    {branch.name} · Map data © Google
+                  </p>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -192,7 +197,7 @@ export function Location() {
               samples, not the studio&apos;s own work.
             </p>
             <p className="mt-3 text-xs font-light text-stone/50">
-              © 2026 {SITE.name}, Tripunithura. All rights reserved.
+              © 2026 {SITE.name} · Tripunithura · Kakkanad. All rights reserved.
             </p>
           </div>
         </div>
