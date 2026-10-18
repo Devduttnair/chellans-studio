@@ -79,6 +79,9 @@ export function Heritage() {
                 <span aria-hidden="true" className="inline-block h-px w-10 bg-gold" />
                 Five decades of craft
               </p>
+              <p className="mt-3 text-[15px] font-light text-ink/55">
+                1976 മുതൽ
+              </p>
               <p className="mt-8 max-w-sm text-[15px] font-light leading-relaxed text-ink/70">
                 {SITE.name} opened its doors in Tripunithura in {START}, in
                 the age of film. Generation after generation, the people of

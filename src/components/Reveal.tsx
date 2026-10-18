@@ -38,6 +38,18 @@ interface EyebrowProps {
   light?: boolean;
 }
 
+/** Subtle Kerala kasavu-inspired divider: fine gold lines with a diamond motif. */
+export function KasavuDivider({ className = "" }: { className?: string }) {
+  return (
+    <div aria-hidden="true" className={`flex items-center gap-3 ${className}`}>
+      <span className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/40 to-gold/70" />
+      <span className="h-1.5 w-1.5 rotate-45 bg-gold/80" />
+      <span className="h-[3px] w-[3px] rotate-45 bg-gold/40" />
+      <span className="h-1.5 w-1.5 rotate-45 bg-gold/80" />
+      <span className="h-px flex-1 bg-gradient-to-l from-transparent via-gold/40 to-gold/70" />
+    </div>
+  );
+}
 /** Small letterspaced section label with a gold rule that draws in. */
 export function Eyebrow({ children, light = false }: EyebrowProps) {
   const reduce = useReducedMotion();

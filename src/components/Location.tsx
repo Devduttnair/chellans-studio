@@ -1,7 +1,7 @@
 "use client";
 
 import { MapPin, Phone, MessageCircle, Navigation, Mail } from "lucide-react";
-import { Eyebrow, Reveal } from "./Reveal";
+import { Eyebrow, KasavuDivider, Reveal } from "./Reveal";
 import {
   SITE,
   WHATSAPP_LINK,
@@ -191,7 +191,8 @@ export function Location() {
             </div>
           </div>
 
-          <div className="mt-12 border-t border-ivory/10 pt-8">
+          <KasavuDivider className="mt-12" />
+          <div className="pt-8">
             <p className="text-xs font-light leading-relaxed text-stone/70">
               Concept demonstration website. Photographs shown are illustrative
               samples, not the studio&apos;s own work.
